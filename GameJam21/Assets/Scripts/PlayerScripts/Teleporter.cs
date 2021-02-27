@@ -28,5 +28,10 @@ public class Teleporter : MonoBehaviour
                 GameObject.DestroyImmediate(tempsight);
             }
         }
+        else if (Input.GetKeyDown(KeyCode.Q)) 
+        {
+            place = !place;
+            GameObject.DestroyImmediate(tempsight); 
+        }
     }
 }
