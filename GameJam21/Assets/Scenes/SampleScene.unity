@@ -273,7 +273,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!212 &593796071
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -387,7 +387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 067d055f3cb89984b9e24f1b30712209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 593796067}
+  player: {fileID: 593796072}
   rb: {fileID: 595135932}
   moveSpeed: 2
 --- !u!50 &595135932
@@ -398,7 +398,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 595135930}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
