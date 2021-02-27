@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector2 moveDir;
 
+    private bool canMove = true;
+
     // Update is called once per frame
     void Update()
     {
@@ -18,7 +20,11 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        Move();
+        if (canMove)
+        {
+            Move();
+
+        }
     }
 
     void ProcessInputs()
@@ -32,5 +38,14 @@ public class PlayerMovement : MonoBehaviour
     void Move()
     {
         rb.velocity = new Vector2(moveDir.x * moveSpeed, moveDir.y * moveSpeed);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            FindObjectOfType<GameManager>().EndGame();
+            canMove = false;
+        }
     }
 }
