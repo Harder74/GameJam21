@@ -12,6 +12,9 @@ public class PlayerMovement : MonoBehaviour
 
     private bool canMove = true;
 
+    public Animator animator;
+    bool running = false;
+
     // Update is called once per frame
     void Update()
     {
@@ -32,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
         float moveX = Input.GetAxisRaw("Horizontal");
         float moveY = Input.GetAxisRaw("Vertical");
 
+            
         moveDir = new Vector2(moveX, moveY);
 
     }
@@ -39,14 +43,27 @@ public class PlayerMovement : MonoBehaviour
     void Move()
     {
         rb.velocity = new Vector2(moveDir.x * moveSpeed, moveDir.y * moveSpeed);
-        if(moveDir.x > 0)
+        if (moveDir.x > 0)
         {
             rb.transform.localScale = new Vector3(-.3f, rb.transform.localScale.y, 1);
         }
-        else if(moveDir.x < 0)
+        else if (moveDir.x < 0)
         {
             rb.transform.localScale = new Vector3(.3f, rb.transform.localScale.y, 1);
         }
+
+        if (moveDir.x == 0 && moveDir.y == 0)
+        {
+            running = false;
+        }
+        else
+        {
+            running = true;
+        }
+
+
+        animator.SetBool("isrunning", running);
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
